@@ -101,7 +101,7 @@ header {
 }
 
 .logo {
-    height: 50px;
+    height: 80px;
     margin-right: 15px;
 }
 
@@ -1004,4 +1004,5 @@ footer {
     .footer-copyright p {
         font-size: 0.9rem;
     }
+
 }
