@@ -6,6 +6,15 @@
     <title>DS Lab - Diagnostic Services Laboratory</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H8YZNVL5Y4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-H8YZNVL5Y4');
+    </script>
 </head>
 <body>
 
@@ -305,7 +314,7 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
     })
     .catch(error => {
         console.error('🔴 Fetch error:', error);
-        formMessage.innerHTML = '<p class="error-message">🚨 Une erreur s\'est produite: ' + error.message + '. Veuillez réessayer ou nous contacter directement.</p>';
+        formMessage.innerHTML = '<p class="error-message">🚨 Une erreur s\\\'est produite: ' + error.message + '. Veuillez réessayer ou nous contacter directement.</p>';
     })
     .finally(() => {
         submitBtn.textContent = originalText;
