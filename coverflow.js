@@ -22,40 +22,84 @@ function buildCoverflow(scene) {
         x: i => i * spacing
     });
 
-    function update() {
-        const x = gsap.getProperty(proxy, "x");
+function update() {
+    const x = gsap.getProperty(proxy, "x");
 
-        cards.forEach(card => card.classList.remove("is-active"));
+    // reset active state
+    cards.forEach(card => card.classList.remove("is-active"));
 
-        cards.forEach((card, i) => {
+    cards.forEach((card, i) => {
 
-            const wrappedX = gsap.utils.wrap(
-                -spacing,
-                totalWidth - spacing,
-                i * spacing + x
-            );
+        // position relative normalisée
+        const rawX = i * spacing + x;
 
-            const xPos = wrappedX - totalWidth / 2;
-            const dist = Math.abs(xPos) / spacing;
+        // wrap pour boucle infinie
+        const wrappedX = gsap.utils.wrap(
+            -spacing,
+            totalWidth - spacing,
+            rawX
+        );
 
-            const scale = gsap.utils.clamp(0.7, 1.1, 1.1 - dist * 0.4);
-            const opacity = gsap.utils.clamp(0.5, 1, 1 - dist * 0.5);
-            const blur = gsap.utils.clamp(0, 5, dist * 4);
-            const zIndex = Math.round(100 - dist * 50);
-            const rotateY = xPos > 0 ? -15 * dist : 15 * dist;
+        // centre exact
+        const xPos = wrappedX - totalWidth / 2;
 
-            if (dist < 0.3) card.classList.add("is-active");
+        // distance normalisée depuis le centre
+        const dist = xPos / spacing;
+        const absDist = Math.abs(dist);
 
-            gsap.set(card, {
-                x: xPos,
-                scale,
-                opacity,
-                zIndex,
-                rotateY,
-                filter: `blur(${blur}px)`
-            });
+        /* -------------------------
+           VISUAL LOGIC
+        -------------------------- */
+
+        // carte active (au centre)
+        const isActive = absDist < 0.25;
+        if (isActive) card.classList.add("is-active");
+
+        // échelle progressive
+        const scale = gsap.utils.clamp(
+            0.82,
+            1.1,
+            1.1 - absDist * 0.35
+        );
+
+        // opacité douce
+        const opacity = gsap.utils.clamp(
+            0.65,
+            1,
+            1 - absDist * 0.4
+        );
+
+        // flou réduit (meilleure lisibilité)
+        const blur = gsap.utils.clamp(
+            0,
+            2.5,
+            absDist * 2
+        );
+
+        // rotation vers le CENTRE
+        const rotateY = gsap.utils.clamp(
+            -25,
+            25,
+            -dist * 18
+        );
+
+        // profondeur
+        const zIndex = Math.round(100 - absDist * 40);
+
+        /* -------------------------
+           APPLY
+        -------------------------- */
+        gsap.set(card, {
+            x: xPos,
+            scale,
+            opacity,
+            rotateY,
+            zIndex,
+            filter: `blur(${blur}px)`
         });
-    }
+    });
+}
+
 
     const step = spacing;
 
