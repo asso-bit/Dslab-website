@@ -620,7 +620,7 @@ nav a.active::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    perspective: 1000px; /* Essential for 3D depth */
+    perspective: 1200px; /* Essential for 3D depth */
     background-color: var(--light); 
     touch-action: pan-y; /* Allows scrolling down the page while swiping the carousel */
 }
@@ -650,6 +650,7 @@ nav a.active::after {
     height: 460px;
     background-color: var(--white);
     border-radius: 8px;
+    transform-style: preserve-3d;
     
     /* Matches your existing styling logic */
     box-shadow: var(--shadow);
@@ -777,6 +778,7 @@ nav a.active::after {
     .coverflow-card {
         width: 260px;
         height: 420px;
+        transform-style: preserve-3d;
         
 
     }
@@ -1224,3 +1226,4 @@ footer {
         font-size: 1.6rem;
     }
 }
+
