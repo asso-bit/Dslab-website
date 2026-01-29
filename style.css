@@ -634,6 +634,7 @@ nav a.active::after {
     align-items: center;
     cursor: grab;
     z-index: 10;
+    user-select: none;
 }
 
 .coverflow-track:active {
@@ -666,7 +667,17 @@ nav a.active::after {
     will-change: transform, opacity, filter;
     user-select: none;
     -webkit-user-drag: none;
+    /* inactive state */
+    pointer-events: none;
+    opacity: 0.6;
+    filter: blur(0.5px);
+
+.coverflow-card.is-active {
+    pointer-events: auto;
+    opacity: 1;
+    filter: none;
 }
+
 
 /* Card Image Area */
 .coverflow-card img {
@@ -677,6 +688,8 @@ nav a.active::after {
     padding: 20px;
     pointer-events: none; /* Prevents dragging the image itself */
     border-bottom: 1px solid rgba(0,0,0,0.05);
+    
+
 }
 
 /* Card Content Area */
@@ -688,6 +701,8 @@ nav a.active::after {
     flex-direction: column;
     justify-content: space-between;
     background-color: var(--white);
+    
+
 }
 
 .coverflow-card .card-content h3 {
@@ -695,11 +710,15 @@ nav a.active::after {
     color: var(--primary);
     margin-bottom: 5px;
     font-weight: 700;
+    
+
 }
 
 /* Remove the underline from the h3 inside cards (overriding global h3 style) */
 .coverflow-card .card-content h3::after {
     display: none; 
+    
+
 }
 
 .coverflow-card .card-content h4 {
@@ -708,6 +727,8 @@ nav a.active::after {
     margin-bottom: 10px;
     font-weight: 600;
     text-transform: uppercase;
+    
+
 }
 
 .coverflow-card .card-content p {
@@ -719,6 +740,8 @@ nav a.active::after {
     -webkit-box-orient: vertical;
     overflow: hidden;
     margin-bottom: 15px;
+    
+
 }
 
 /* Button inside card */
@@ -733,12 +756,16 @@ nav a.active::after {
     transition: var(--transition);
     align-self: center;
     border: 2px solid transparent;
+    
+
 }
 
 .coverflow-card .btn-mini:hover {
     background-color: var(--primary);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(198, 40, 40, 0.3);
+    
+
 }
 
 /* Mobile Responsiveness for Carousel */
@@ -750,10 +777,14 @@ nav a.active::after {
     .coverflow-card {
         width: 260px;
         height: 420px;
+        
+
     }
 
     .coverflow-card img {
         height: 160px;
+        
+
     }
 }
 
@@ -1156,4 +1187,5 @@ footer {
     }
 
 }
+
 
