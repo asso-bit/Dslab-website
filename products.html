@@ -4,135 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nos Produits - DS Lab</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H8YZNVL5Y4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-H8YZNVL5Y4');
+    </script>
     
-    <style>
-        /* --- 3D WHEEL STYLES --- */
-        body {
-            overflow-x: hidden; /* Prevent horizontal scroll from 3D elements */
-        }
-
-        .brand-section {
-            padding: 80px 0;
-            overflow: hidden;
-            background: #f8f9fa;
-            position: relative;
-        }
-
-        .brand-header {
-            text-align: center;
-            margin-bottom: 60px;
-            position: relative;
-            z-index: 10;
-        }
-
-        /* The 3D Scene Container */
-        .wheel-scene {
-            width: 100%;
-            height: 500px; /* Adjust based on card height */
-            perspective: 1000px; /* How "deep" the 3D effect looks */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            /* Mask the sides for a cleaner look */
-            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-        }
-
-        /* The Rotating Cylinder */
-        .wheel {
-            width: 300px; /* Card Width */
-            height: 450px; /* Card Height */
-            position: relative;
-            transform-style: preserve-3d; /* Crucial for 3D */
-            cursor: grab;
-        }
-
-        .wheel:active {
-            cursor: grabbing;
-        }
-
-        /* Individual Cards */
-        .wheel-card {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            /* Backface visibility: hidden makes items disappear when behind the wheel
-               Remove this line if you want to see the back of the wheel semi-transparent */
-            backface-visibility: hidden; 
-            border: 1px solid rgba(0,0,0,0.05);
-            user-select: none; /* Prevent text highlighting while dragging */
-        }
-
-        .wheel-card img {
-            width: 100%;
-            height: 220px;
-            object-fit: contain;
-            background: #fff;
-            padding: 20px;
-            pointer-events: none; /* Crucial for smooth dragging */
-        }
-
-        .card-content {
-            padding: 20px;
-            text-align: center;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .card-content h3 {
-            margin: 0 0 5px;
-            color: #333;
-            font-size: 1.2rem;
-        }
-        
-        .card-content h4 {
-            margin: 0 0 10px;
-            color: #007bff;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .card-content p {
-            font-size: 0.85rem;
-            color: #666;
-            line-height: 1.4;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .btn-mini {
-            margin-top: 15px;
-            padding: 10px 20px;
-            background: #333;
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            display: inline-block;
-            transition: 0.3s;
-        }
-        .btn-mini:hover {
-            background: #007bff;
-        }
-
-    </style>
 </head>
 <body>
+
+    <header>
+        <div class="container header-container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="dslab.png" alt="DS Lab Logo" class="logo">
+                </a>
+                <p class="subtitle">DIAGNOSTIC SERVICES LABORATORY</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html#accueil">Accueil</a></li>
+                    <li><a href="index.html#services">Nos Services</a></li>
+                    <li><a href="products.html" class="active">Produits</a></li>
+                    <li><a href="index.html#a-propos">À Propos</a></li>
+                    <li><a href="index.html#contact" class="btn-contact">Contact & Devis</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+<main>
 
     <section id="sensa-core" class="brand-section">
         <div class="container">
@@ -257,6 +164,13 @@
             </div>
         </div>
     </section>
+</main>
+ <footer>
+        <div class="container">
+            <p>Adresse : Boumhal, Tunisia, 2097 | Tél : 71 481 659 | Email : contact@dslab.tn</p>
+            <p>&copy; 2025 DS Lab - Diagnostic Services Laboratory. Tous droits réservés.</p>
+        </div>
+  </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
@@ -346,6 +260,7 @@
                 }
             });
         });
+       
 
     </script>
 </body>
