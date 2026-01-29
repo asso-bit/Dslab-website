@@ -671,7 +671,7 @@ nav a.active::after {
     pointer-events: none;
     opacity: 0.6;
     filter: blur(0.5px);
-
+}
 .coverflow-card.is-active {
     pointer-events: auto;
     opacity: 1;
@@ -1224,7 +1224,3 @@ footer {
         font-size: 1.6rem;
     }
 }
-
-
-
-
