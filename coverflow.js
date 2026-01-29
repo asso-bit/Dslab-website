@@ -18,15 +18,34 @@ function buildCoverflow(scene) {
 
     const proxy = document.createElement("div");
     let x = 0;
+    const prevBtn = scene.querySelector('.nav-btn.prev');
+    const nextBtn = scene.querySelector('.nav-btn.next');
 
-    function update() {
-        if (!Draggable.get(proxy)?.isPressed) {
-            x -= 0.6; // auto-play speed
+    const step = spacing; // move exactly one card
+
+    prevBtn.addEventListener('click', () => {
+    gsap.to(proxy, {
+        x: `+=${step}`,
+        duration: 0.6,
+        ease: "power3.out"
+    });
+});
+
+    nextBtn.addEventListener('click', () => {
+    gsap.to(proxy, {
+        x: `-=${step}`,
+        duration: 0.6,
+        ease: "power3.out"
+    });
+});
+
+   
         }
 
         gsap.set(proxy, { x });
 
         cards.forEach((card, i) => {
+            cards.forEach(card => card.classList.remove('is-active'));
             const wrappedX = gsap.utils.wrap(
                 -spacing,
                 totalWidth - spacing,
@@ -41,6 +60,10 @@ function buildCoverflow(scene) {
             const blur = gsap.utils.clamp(0, 5, dist * 5);
             const zIndex = Math.round(100 - dist * 100);
             const rotY = xPos > 0 ? -15 * dist : 15 * dist;
+            if (dist < 0.15) {
+                card.classList.add('is-active');
+                }
+
 
             gsap.set(card, {
                 x: xPos,
